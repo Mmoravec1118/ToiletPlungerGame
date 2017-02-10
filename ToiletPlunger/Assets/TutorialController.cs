@@ -18,11 +18,16 @@ public class TutorialController : MonoBehaviour {
     public Image upArrow;
     bool isUp = true;
     float timer = 1;
+   public CameraMover cam;
 
-    enum Stage { intro, down, up, practice, combo }
+    public Slider horizontal, vertical;
+
+    enum Stage { intro,horizontal, vertical, down, up, practice, combo }
     Stage stage = Stage.intro;
-	// Use this for initialization
-	void Start () {
+    private float sliderSpeed = .025f;
+
+    // Use this for initialization
+    void Start () {
         tutorialInfo = new Queue<string>();
         tutorialInfo.Enqueue("Welcome to the Toilet Plunger Simulator!");
         tutorialInfo.Enqueue("Here you will learn how to properly plunge a toilet");
@@ -31,7 +36,13 @@ public class TutorialController : MonoBehaviour {
         tutorialInfo.Enqueue("Ah! There it is");
         tutorialInfo.Enqueue("And a plunger...");
         tutorialInfo.Enqueue("There we go.");
-        tutorialInfo.Enqueue("To start off, simply place the plunger in the toilet");
+        tutorialInfo.Enqueue("To start off we have to position the plunger over the drain.");
+        tutorialInfo.Enqueue("Press the space bar to stop the plunger when it's in the middle.");
+        tutorialInfo.Enqueue("For our purposes we will do it horizontally first then vertically");
+        tutorialInfo.Enqueue("Like this, make sure it's in the middle or you won't have a good seal.");
+        tutorialInfo.Enqueue("Now you try");
+
+        tutorialInfo.Enqueue("Now you, simply place the plunger in the toilet");
         tutorialInfo.Enqueue("Then pull up on the plunger to release the pressure!");
         tutorialInfo.Enqueue("Repeat that process until the toilet is no longer clogged!");
         tutorialInfo.Enqueue("Great! Doing it quickly is the key, to push the clog through!");
@@ -48,7 +59,12 @@ public class TutorialController : MonoBehaviour {
         Invoke("SpawnPlunger", 23);
         Invoke("UpdateText", 25);
         Invoke("UpdateText", 28);
-        Invoke("SetStageToDown", 28);
+        Invoke("UpdateText", 32);
+        Invoke("UpdateText", 35);
+        Invoke("UpdateText", 38);
+        Invoke("HorizontalShowWait", 40);
+        
+        //Invoke("SetStageToDown", 28);
 
     }
 
@@ -58,25 +74,80 @@ public class TutorialController : MonoBehaviour {
         {
             case Stage.intro:
                 break;
-            case Stage.down:
-                canPlunge = true;
-                downArrow.gameObject.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    tutorialText.text = tutorialInfo.Dequeue();
-                    stage = Stage.up;
-                    var pos = plunger.transform.position;
-                    pos.y -= .2f;
-                    plunger.transform.position = pos;
-                    downArrow.gameObject.SetActive(false);
 
+            case Stage.horizontal:
+                cam.above = true;
+                horizontal.value += sliderSpeed;
+                Vector3 pos = plunger.transform.position;
+                pos.x += sliderSpeed * .1f;
+                plunger.transform.position = pos;
+                if (horizontal.value == -.5f || horizontal.value == .5f)
+                {
+                    sliderSpeed *= -1;
+                }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (horizontal.value > .1f || horizontal.value < -.1f )
+                    {
+                        tutorialText.text = "Not qute the middle...";
+                    }
+                    else
+                    {
+                        tutorialText.text = "Good, now the vertical...";
+                        stage = Stage.vertical;
+                    }
+                }
+
+                break;
+
+            case Stage.vertical:
+
+                cam.above = true;
+                vertical.value += sliderSpeed;
+                pos = plunger.transform.position;
+                pos.z += sliderSpeed * .1f;
+                plunger.transform.position = pos;
+                if (vertical.value == -.5f || vertical.value == .5f)
+                {
+                    sliderSpeed *= -1;
+                }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (vertical.value > .1f || vertical.value < -.1f)
+                    {
+                        tutorialText.text = "Not qute the middle...";
+                    }
+                    else
+                    {
+                        tutorialText.text = "Great Now you have to depress the plunger like this!";
+                        stage = Stage.down;
+                        StartCoroutine("ExamplePlunger");
+                        cam.above = false;
+                    }
+                }
+                break;
+
+            case Stage.down:
+                if (canPlunge)
+                {
+                    downArrow.gameObject.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        tutorialText.text = tutorialInfo.Dequeue();
+                        stage = Stage.up;
+                        pos = plunger.transform.position;
+                        pos.y -= .2f;
+                        plunger.transform.position = pos;
+                        downArrow.gameObject.SetActive(false);
+
+                    }
                 }
                 break;
             case Stage.up:
                 upArrow.gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    var pos = plunger.transform.position;
+                    pos = plunger.transform.position;
                     pos.y += .2f;
                     plunger.transform.position = pos;
                     tutorialText.text = tutorialInfo.Dequeue();
@@ -88,7 +159,7 @@ public class TutorialController : MonoBehaviour {
 
                 if (Input.GetKeyDown(KeyCode.UpArrow) && !isUp)
                 {
-                    var pos = plunger.transform.position;
+                    pos = plunger.transform.position;
                     pos.y += .2f;
                     plunger.transform.position = pos;
                     isUp = true;
@@ -97,7 +168,7 @@ public class TutorialController : MonoBehaviour {
 
                 else if (Input.GetKeyDown(KeyCode.DownArrow) && isUp)
                 {
-                    var pos = plunger.transform.position;
+                    pos = plunger.transform.position;
                     pos.y -= .2f;
                     plunger.transform.position = pos;
                     isUp = false;
@@ -125,7 +196,7 @@ public class TutorialController : MonoBehaviour {
 
                 if (Input.GetKeyDown(KeyCode.UpArrow) && !isUp)
                 {
-                    var pos = plunger.transform.position;
+                    pos = plunger.transform.position;
                     pos.y += .2f;
                     plunger.transform.position = pos;
                     isUp = true;
@@ -135,7 +206,7 @@ public class TutorialController : MonoBehaviour {
 
                 else if (Input.GetKeyDown(KeyCode.DownArrow) && isUp)
                 {
-                    var pos = plunger.transform.position;
+                    pos = plunger.transform.position;
                     pos.y -= .2f;
                     plunger.transform.position = pos;
                     isUp = false;
@@ -170,6 +241,11 @@ public class TutorialController : MonoBehaviour {
         }
     }
 
+    void ShowSliders()
+    {
+        vertical.gameObject.SetActive(true);
+        horizontal.gameObject.SetActive(true);
+    }
     void UpdateText()
     {
         tutorialText.text = tutorialInfo.Dequeue();
@@ -195,6 +271,71 @@ public class TutorialController : MonoBehaviour {
     void goToMain()
     {
         SceneManager.LoadScene("Main");
+    }
+
+    void HorizontalShowWait()
+    {
+        StartCoroutine("HorizontalShow");
+    }
+    IEnumerator HorizontalShow()
+    {
+        for (float i = 0; i < 140; i++)
+        {
+            horizontal.value += sliderSpeed;
+            if (horizontal.value == -.5f || horizontal.value == .5f)
+            {
+                sliderSpeed *= -1;
+            }
+            Vector3 pos = plunger.transform.position;
+            pos.x += sliderSpeed * .1f;
+            plunger.transform.position = pos;
+            yield return null;
+        }
+        StartCoroutine("VerticalShow");
+    }
+
+    IEnumerator VerticalShow()
+    {
+        for (float i = 0; i < 140; i++)
+        {
+            vertical.value += sliderSpeed;
+            if (vertical.value == -.5f || vertical.value == .5f)
+            {
+                sliderSpeed *= -1;
+            }
+            Vector3 pos = plunger.transform.position;
+            pos.z += sliderSpeed * .1f;
+            plunger.transform.position = pos;
+            yield return null;
+        }
+        UpdateText();
+        stage = Stage.horizontal;
+    }
+
+    IEnumerator ExamplePlunger()
+    {
+
+        for (int i = 0; i < 10; i++)
+        {
+            if (isUp)
+            {
+                var pos = plunger.transform.position;
+                pos.y -= .2f;
+                plunger.transform.position = pos;
+                isUp = false;
+            }
+            else
+            {
+                var pos = plunger.transform.position;
+                pos.y += .2f;
+                plunger.transform.position = pos;
+                isUp = true;
+            }
+            yield return new WaitForSeconds(.25f);
+
+        }
+        canPlunge = true;
+        Invoke("UpdateText", 1);
     }
 
 }

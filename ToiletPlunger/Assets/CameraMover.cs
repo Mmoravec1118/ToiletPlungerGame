@@ -7,18 +7,24 @@ public class CameraMover : MonoBehaviour {
     // Use this for initialization
     public Transform startMarker;
     public Transform endMarker;
-    public float speed = 1.0F;
-    private float startTime;
-    private float journeyLength;
+    
+    public bool above = false;
     void Start()
     {
-        startTime = Time.time;
-        journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
+       
     }
     void Update()
     {
-        float distCovered = (Time.time - startTime) * speed;
-        float fracJourney = distCovered / journeyLength;
-        transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fracJourney);
+        if (above)
+        {
+            transform.position = endMarker.position;
+            transform.rotation = endMarker.rotation;
+        }
+        if (!above)
+        {
+            transform.position = startMarker.position;
+            transform.rotation = startMarker.rotation;
+        }
+       
     }
 }

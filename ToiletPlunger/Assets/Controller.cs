@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour {
 
     public Button LO;
     public Button Instructions;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -33,6 +34,7 @@ public class Controller : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 		
+
 	}
     public void ActiveGame()
     {
