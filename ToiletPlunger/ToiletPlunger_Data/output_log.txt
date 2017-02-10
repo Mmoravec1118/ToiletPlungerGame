@@ -1,0 +1,71 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: Intel(R) HD Graphics 5500 (ID=0x1616)
+    Vendor:   Intel
+    VRAM:     2111 MB
+    Driver:   20.19.15.4549
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\ConditionalExpression.dll (this message is harmless)
+Loading C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\ConditionalExpression.dll into Unity Child Domain
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\PlayMaker.dll (this message is harmless)
+Loading C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\PlayMaker.dll into Unity Child Domain
+- Completed reload, in  0.091 seconds
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Marty\Downloads\ToiletPlunger\ToiletPlunger\ToiletPlunger_Data\Managed\System.dll (this message is harmless)
+desktop: 2560x1440 60Hz; virtual: 2560x1440 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 3.659867 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 3f4 -> priority: 1 
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.617386 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1174.
+Total: 0.579471 ms (FindLiveObjects: 0.099643 ms CreateObjectMapping: 0.130862 ms MarkObjects: 0.331004 ms  DeleteObjects: 0.017533 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.511902 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 1209.
+Total: 0.461866 ms (FindLiveObjects: 0.065431 ms CreateObjectMapping: 0.082964 ms MarkObjects: 0.279258 ms  DeleteObjects: 0.032929 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.634639 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1208.
+Total: 0.411403 ms (FindLiveObjects: 0.085530 ms CreateObjectMapping: 0.083392 ms MarkObjects: 0.235637 ms  DeleteObjects: 0.006414 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.650462 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1209.
+Total: 0.959656 ms (FindLiveObjects: 0.370348 ms CreateObjectMapping: 0.157804 ms MarkObjects: 0.393442 ms  DeleteObjects: 0.035495 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.774910 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1181.
+Total: 1.266285 ms (FindLiveObjects: 0.278403 ms CreateObjectMapping: 0.268994 ms MarkObjects: 0.706912 ms  DeleteObjects: 0.010263 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.490092 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1209.
+Total: 1.118744 ms (FindLiveObjects: 0.256592 ms CreateObjectMapping: 0.179614 ms MarkObjects: 0.621809 ms  DeleteObjects: 0.056022 ms)
+
